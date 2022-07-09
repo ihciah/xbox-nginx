@@ -1,0 +1,13 @@
+version: '2.4'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    network_mode: "host"
+    volumes:
+      - type: "bind"
+        source: "./nginx.conf"
+        target: "/etc/nginx/nginx.conf"
+      - "./conf.d:/etc/nginx/conf.d:ro"
+      - "./www:/var/www:ro"
